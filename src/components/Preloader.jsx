@@ -6,10 +6,12 @@ export default function Preloader({ visible }) {
     <AnimatePresence>
       {visible && (
         <motion.div
+          key="preloader"
           className="fixed inset-0 z-[999] flex items-center justify-center bg-forest-dark"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.6, ease: 'easeInOut' }}
+          style={{ pointerEvents: 'auto' }}
         >
           <div className="flex flex-col items-center gap-5">
             <motion.img

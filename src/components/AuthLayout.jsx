@@ -5,8 +5,18 @@ import logo from '../assets/logo-1.png'
 
 export default function AuthLayout({ children, eyebrow, title, subtitle }) {
   return (
-    <div className="min-h-screen grid lg:grid-cols-2 bg-cream">
-      {/* Left: image panel */}
+    <div className="min-h-screen flex flex-col lg:grid lg:grid-cols-2 bg-cream">
+      {/* Mobile-only top image banner */}
+      <div className="relative lg:hidden h-44 sm:h-56 overflow-hidden bg-forest-dark">
+        <img
+          src={authSide}
+          alt="A clinician caring for a patient"
+          className="absolute inset-0 w-full h-full object-cover opacity-80"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-forest-dark via-forest-dark/40 to-transparent" />
+      </div>
+
+      {/* Left: image panel (desktop only) */}
       <motion.div
         initial={{ opacity: 0, x: -24 }}
         animate={{ opacity: 1, x: 0 }}
@@ -49,14 +59,14 @@ export default function AuthLayout({ children, eyebrow, title, subtitle }) {
         initial={{ opacity: 0, x: 24 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.7, ease: 'easeOut', delay: 0.1 }}
-        className="flex items-center justify-center px-6 py-14"
+        className="flex-1 flex items-center justify-center px-6 py-10 sm:py-14"
       >
         <div className="w-full max-w-sm">
-          <Link to="/" className="flex items-center lg:hidden">
-            <img src={logo} alt="Antenatal" className="h-11 w-auto" />
+          <Link to="/" className="flex items-center justify-center lg:hidden">
+            <img src={logo} alt="Antenatal" className="h-12 w-auto" />
           </Link>
-          <h1 className="mt-6 lg:mt-0 text-2xl font-medium">{title}</h1>
-          <p className="mt-1 text-sm text-ink/60">{subtitle}</p>
+          <h1 className="mt-8 lg:mt-0 text-2xl font-medium text-center lg:text-left">{title}</h1>
+          <p className="mt-1 text-sm text-ink/60 text-center lg:text-left">{subtitle}</p>
           <div className="mt-8">{children}</div>
         </div>
       </motion.div>

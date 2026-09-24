@@ -49,7 +49,7 @@ export default function HeroCarousel({ variant = 'card', showCaptions = true }) 
       className={
         isFullBleed
           ? 'absolute inset-0 overflow-hidden'
-          : 'relative w-full h-[340px] sm:h-[420px] lg:h-[560px] rounded-2xl overflow-hidden shadow-xl shadow-forest-dark/10 ring-1 ring-black/5'
+          : 'relative w-full h-[260px] xs:h-[300px] sm:h-[420px] lg:h-[560px] rounded-2xl overflow-hidden shadow-xl shadow-forest-dark/10 ring-1 ring-black/5'
       }
     >
       {SLIDES.map((slide, i) => (
@@ -62,23 +62,29 @@ export default function HeroCarousel({ variant = 'card', showCaptions = true }) 
           <img
             src={slide.src}
             alt={slide.caption}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover object-center sm:object-center"
             loading={i === 0 ? 'eager' : 'lazy'}
           />
           {isFullBleed ? (
             <div className="absolute inset-0 bg-forest-dark/60" />
           ) : (
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/15 to-transparent sm:from-ink/70 sm:via-ink/10" />
           )}
           {showCaptions && !isFullBleed && (
-            <p className="absolute bottom-5 left-5 right-5 text-cream text-sm sm:text-base font-medium">
+            <p className="absolute bottom-4 left-4 right-4 sm:bottom-5 sm:left-5 sm:right-5 text-cream text-xs sm:text-base font-medium leading-snug">
               {slide.caption}
             </p>
           )}
         </div>
       ))}
 
-      <div className={`absolute ${isFullBleed ? 'bottom-8 left-1/2 -translate-x-1/2' : 'top-4 right-4'} flex gap-1.5`}>
+      <div
+        className={`absolute ${
+          isFullBleed
+            ? 'bottom-6 sm:bottom-8 left-1/2 -translate-x-1/2'
+            : 'top-3 right-3 sm:top-4 sm:right-4'
+        } flex gap-1.5 z-10`}
+      >
         {SLIDES.map((slide, i) => (
           <button
             key={slide.src}

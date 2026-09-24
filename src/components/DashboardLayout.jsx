@@ -6,10 +6,10 @@ export default function DashboardLayout() {
   const location = useLocation()
 
   return (
-    <div className="flex min-h-screen bg-cream">
+    <div className="flex flex-col lg:flex-row min-h-screen bg-cream">
       <Sidebar />
-      <main className="flex-1 min-w-0 overflow-hidden">
-        <div className="max-w-5xl mx-auto px-6 md:px-10 py-10">
+      <main className="flex-1 min-w-0">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-10 py-6 sm:py-10">
           <AnimatePresence mode="wait">
             <motion.div
               key={location.pathname}
